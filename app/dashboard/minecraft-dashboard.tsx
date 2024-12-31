@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
+import { Form } from "react-router";
 import { PlayerList, type Player } from "~/components/player-list";
 import { ServerStatus } from "~/components/server-status";
 
@@ -28,9 +26,16 @@ export function MinecraftDashboard({ serverStatus, players }: Props) {
             </CardHeader>
             <CardContent>
               <ServerStatus status={serverStatus} />
-              <Button onClick={toggleServer} className="mt-4 w-full">
-                {serverStatus === "online" ? "Stop Server" : "Start Server"}
-              </Button>
+              <Form onSubmit={toggleServer} method="POST">
+                <input
+                  type="hidden"
+                  value={serverStatus}
+                  name="current-status"
+                />
+                <Button type="submit" className="mt-4 w-full">
+                  {serverStatus === "online" ? "Stop Server" : "Start Server"}
+                </Button>
+              </Form>
             </CardContent>
           </Card>
 

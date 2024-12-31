@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router";
+import type { ActionFunctionArgs } from "react-router";
 import { MinecraftDashboard } from "~/dashboard/minecraft-dashboard";
 
 export function meta() {
@@ -17,8 +18,14 @@ export async function loader() {
 
   return {
     serverStatus: response.online ? "online" : "offline",
-    players: response.players.list,
+    players: response?.players?.list ?? [],
   };
+}
+
+export async function action(args: ActionFunctionArgs) {
+  const payload = await args.request.formData();
+  console.log(payload.get("current-status"));
+  return null;
 }
 
 export default function Home() {

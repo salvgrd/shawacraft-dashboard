@@ -8,6 +8,8 @@ interface PlayerListProps {
 }
 
 export function PlayerList({ players }: PlayerListProps) {
+  if (!players.length)
+    return <span className="font-bold">No players online.</span>;
   return (
     <ul className="space-y-2">
       {players.map((player) => (

@@ -3,22 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { type Player, PlayerList } from "./player-list";
-import { ServerStatus } from "./server-status";
+import { PlayerList, type Player } from "~/components/player-list";
+import { ServerStatus } from "~/components/server-status";
 
-export function MinecraftDashboard() {
-  const [serverStatus, setServerStatus] = useState<"online" | "offline">(
-    "online"
-  );
-  const [players] = useState<Player[]>([
-    { id: 1, name: "Steve", status: "online" },
-    { id: 2, name: "Alex", status: "online" },
-    { id: 3, name: "Creeper", status: "offline" },
-  ]);
+type Props = {
+  serverStatus: "online" | "offline";
+  players: Player[];
+};
 
-  const toggleServer = () => {
-    setServerStatus(serverStatus === "online" ? "offline" : "online");
-  };
+export function MinecraftDashboard({ serverStatus, players }: Props) {
+  const toggleServer = () => {};
 
   return (
     <main className="min-h-screen bg-[#f0f0f0] p-4 md:p-8">

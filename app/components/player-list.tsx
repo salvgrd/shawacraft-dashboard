@@ -1,7 +1,6 @@
 export interface Player {
-  id: number;
+  uuid: string;
   name: string;
-  status: "online" | "offline";
 }
 
 interface PlayerListProps {
@@ -13,17 +12,11 @@ export function PlayerList({ players }: PlayerListProps) {
     <ul className="space-y-2">
       {players.map((player) => (
         <li
-          key={player.id}
+          key={player.uuid}
           className="flex items-center justify-between border-2 border-black p-2"
         >
           <span className="font-bold">{player.name}</span>
-          <span
-            className={`px-2 py-1 text-sm ${
-              player.status === "online" ? "bg-green-200" : "bg-red-200"
-            }`}
-          >
-            {player.status}
-          </span>
+          <span className={`px-2 py-1 text-sm bg-green-200`}>Online</span>
         </li>
       ))}
     </ul>

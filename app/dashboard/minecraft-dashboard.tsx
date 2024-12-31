@@ -43,39 +43,6 @@ export function MinecraftDashboard({ serverStatus, players }: Props) {
             </CardContent>
           </Card>
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Server Configuration</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form className="space-y-4">
-              <div>
-                <Label htmlFor="seed">World Seed</Label>
-                <Input
-                  id="seed"
-                  placeholder="Enter world seed"
-                  className="mt-1"
-                />
-              </div>
-              <div>
-                <Label htmlFor="gamemode">Default Gamemode</Label>
-                <select
-                  id="gamemode"
-                  className="w-full border-2 bg-white border-black p-2 mt-1"
-                >
-                  <option>Survival</option>
-                  <option>Creative</option>
-                  <option>Adventure</option>
-                  <option>Spectator</option>
-                </select>
-              </div>
-              <Button type="submit" className="w-full">
-                Update Configuration
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
       </div>
     </main>
   );
